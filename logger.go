@@ -2,6 +2,7 @@ package logsip
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"sync"
@@ -274,4 +275,9 @@ func Debugln(v ...interface{}) {
 	if std.Level >= DebugLevel {
 		std.Logger.Println(DebugLevel.String() + fmt.Sprint(v...))
 	}
+}
+
+// SetOutput allows you to use the global logger with any io.Writer
+func SetOutput(w io.Writer) {
+	std.SetOutput(w)
 }
